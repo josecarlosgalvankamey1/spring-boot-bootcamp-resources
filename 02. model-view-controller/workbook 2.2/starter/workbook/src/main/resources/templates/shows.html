@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Shows</title>
-    </head>
-    <body>
-        <h2>IMDB: Top 5 Episodes</h2>
-        <table width="100%", border="solid">
-          <tr>
-            <th>Title</th>
-            <th>Episode</th>
-            <th>Rating</th>
-          </tr>
-          <tr>
-            <td>Breaking Bad</td>
-            <td>Ozymandias</td>
-            <td>10.0</td>
-          </tr>
-          <tr>
-            <td>Attack on Titan</td>
-            <td>Hero</td>
-            <td>9.9</td>
-          </tr>
-          <tr>
-            <td>Attack on Titan</td>
-            <td>Perfect Game</td>
-            <td>9.9</td>
-          </tr>
-          <tr>
-            <td>Star Wars: The Clone Wars</td>
-            <td>Victory and Death</td>
-            <td>9.9</td>
-          </tr>
-          <tr>
-            <td>Mr. Robot</td>
-            <td>407 Proxy Authentication Required</td>
-            <td>9.9</td>
-          </tr>
-        </table>        
-    </body>
+
+<head>
+  <title>Shows</title>
+</head>
+
+<body>
+  <h2>IMDB: Top 5 Episodes</h2>
+  <table width="100%" , border="solid">
+    <tr>
+      <th>Title</th>
+      <th>Episode</th>
+      <th>Rating</th>
+    </tr>
+    <tr>
+      <td th:text="${first.title}"></td>
+      <td th:text="${first.episode}"></td>
+      <td th:text="${first.rating}"></td>
+    </tr>
+    <tr>
+      <td th:text="${second.title}"></td>
+      <td th:text="${second.episode}"></td>
+      <td th:text="${second.rating}"></td>
+    </tr>
+    <tr>
+      <td th:text="${third.title}"></td>
+      <td th:text="${third.episode}"></td>
+      <td th:text="${third.rating}"></td>
+    </tr>
+    <tr>
+      <td th:text="${fourth.title}"></td>
+      <td th:text="${fourth.episode}"></td>
+      <td th:text="${fourth.rating}"></td>
+    </tr>
+    <tr>
+      <td th:text="${fifth.title}"></td>
+      <td th:text="${fifth.episode}"></td>
+      <td th:text="${fifth.rating}"></td>
+    </tr>
+  </table>
+</body>
+
 </html>
