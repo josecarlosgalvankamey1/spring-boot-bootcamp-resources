@@ -1,9 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Sales Records</title>
-    </head>
-    <body>
-        <h2>Sales Records</h2>
-    </body>
+
+<head>
+    <title>Sales Records</title>
+</head>
+
+<body>
+    <h2>Sales Records</h2>
+    <table border="solid 1px">
+        <tr>
+            <th>Item</th>
+            <th>Revenue</th>
+            <th>Cost</th>
+            <th>Profit</th>
+        </tr>
+        <tr th:each="record: ${records}"
+            th:style="'background-color: ' + (${record.revenue - record.cost >= 0} ? 'green' : 'red')">
+            <td th:text="${record.item}"></td>
+            <td th:text="${#numbers.formatCurrency(record.revenue)}"></td>
+            <td th:text="${#numbers.formatCurrency(record.cost)}"></td>
+            <td th:text="${#numbers.formatCurrency(record.revenue - record.cost)}"></td>
+        </tr>
+    </table>
+</body>
+
 </html>
