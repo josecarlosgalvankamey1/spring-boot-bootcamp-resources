@@ -1,5 +1,7 @@
 package com.ltp.gradesubmission;
 
+import static com.ltp.gradesubmission.Constants.NOT_FOUND;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class GradeController {
     public String gradeForm(Model model, @RequestParam(required = false) String id) {
         Grade grade;
         int index = getGradeIndex(id);
-        grade = index == -1 ? new Grade() : studentGrades.get(index);
+        grade = index == NOT_FOUND ? new Grade() : studentGrades.get(index);
         model.addAttribute("grade", grade);
         return "form";
     }
@@ -32,7 +34,7 @@ public class GradeController {
     @PostMapping("/handleSubmit")
     public String submitForm(Grade grade) {
         int index = getGradeIndex(grade.getId());
-        if (index == -1) {
+        if (index == NOT_FOUND) {
             studentGrades.add(grade);
         } else {
             studentGrades.set(index, grade);
@@ -46,6 +48,6 @@ public class GradeController {
             if (currentGrade.getId().equals(id))
                 return i;
         }
-        return -1;
+        return NOT_FOUND;
     }
 }
