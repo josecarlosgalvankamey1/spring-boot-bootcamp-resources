@@ -1,6 +1,7 @@
 package com.ltp.globalsuperstore;
 
 import java.sql.Date;
+import java.util.UUID;
 
 public class Item {
     private String category;
@@ -8,9 +9,10 @@ public class Item {
     private Double price;
     private Double discount;
     private Date date;
+    private String id;
 
     public Item() {
-
+        this.id = UUID.randomUUID().toString();
     }
 
     public String getCategory() {
@@ -53,15 +55,12 @@ public class Item {
         this.date = date;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                " category='" + getCategory() + "'" +
-                ", name='" + getName() + "'" +
-                ", price='" + getPrice() + "'" +
-                ", discount='" + getDiscount() + "'" +
-                ", date='" + getDate() + "'" +
-                "}";
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
 }
