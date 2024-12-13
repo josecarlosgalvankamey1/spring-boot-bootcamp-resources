@@ -50,7 +50,7 @@ public class SuperstoreController {
         } else {
             currentStatus = FAILED_STATUS;
         }
-        redirectAttributes.addAttribute("status", currentStatus);
+        redirectAttributes.addFlashAttribute("status", currentStatus);
         return "redirect:/inventory";
     }
 
