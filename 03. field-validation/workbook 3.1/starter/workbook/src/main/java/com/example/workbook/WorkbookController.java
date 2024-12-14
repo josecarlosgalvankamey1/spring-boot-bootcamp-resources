@@ -10,4 +10,9 @@ public class WorkbookController {
     public String getForm() {
         return "sign-up";
     }
+
+    @GetMapping("/result")
+    public String getResult() {
+        return "result";
+    }
 }
