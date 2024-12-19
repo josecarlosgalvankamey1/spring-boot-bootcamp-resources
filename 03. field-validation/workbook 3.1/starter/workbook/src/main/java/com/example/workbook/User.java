@@ -4,6 +4,9 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.example.workbook.validation.Age;
+import com.example.workbook.validation.Username;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
@@ -13,16 +16,22 @@ public class User {
     @NotBlank(message = "First name cannot be blank")
     @Size(min = 2, message = "First name is too short")
     private String firstName;
+
     @NotBlank(message = "Last name cannot be blank")
     @Size(min = 2, message = "Last name is too short")
     private String lastName;
+
     @NotBlank(message = "Username cannot be blank")
     @Size(min = 7, message = "Username is too short")
+    @Username(message = "Cannot contain special characters or uppercase characters ")
     private String userName;
+
     @Email(message = "Invalid email")
     @NotBlank(message = "Email cannot be blank")
     private String email;
+
     @Past(message = "Date of birth must be in the past")
+    @Age(message = "Age must be at least 18")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
