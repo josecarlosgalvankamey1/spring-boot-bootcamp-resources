@@ -23,6 +23,9 @@ public class WorkbookController {
 
     @PostMapping("/submitItem")
     public String handleSubmit(@Validated User user, BindingResult result) {
+        if (user.getFirstName().equalsIgnoreCase(user.getLastName())) {
+            result.rejectValue("lastName", "", "Invalid data");
+        }
         if (result.hasErrors()) {
             return "sign-up";
         }
