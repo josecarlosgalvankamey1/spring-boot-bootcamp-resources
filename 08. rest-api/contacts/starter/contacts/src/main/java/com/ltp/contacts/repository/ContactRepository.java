@@ -1,6 +1,6 @@
 package com.ltp.contacts.repository;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -9,8 +9,11 @@ import com.ltp.contacts.pojo.Contact;
 
 @Repository
 public class ContactRepository {
-    
-    private List<Contact> contacts = new ArrayList<>();
+
+    private List<Contact> contacts = Arrays.asList(
+            new Contact("123", "Jon Snow", "0001112222"),
+            new Contact("456", "Tyrion", "8887773344"),
+            new Contact("789", "The Hound", "5558883344"));
 
     public List<Contact> getContacts() {
         return contacts;
@@ -24,10 +27,10 @@ public class ContactRepository {
         contacts.add(contact);
     }
 
-    public void updateContact(int index, Contact contact) { 
-        contacts.set(index, contact); 
+    public void updateContact(int index, Contact contact) {
+        contacts.set(index, contact);
     }
-    
+
     public void deleteContact(int index) {
         contacts.remove(index);
     }
