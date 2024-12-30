@@ -4,4 +4,6 @@ import com.ltp.contacts.pojo.Contact;
 
 public interface ContactService {
     Contact geContactById(String id);
+
+    void saveContact(Contact contact);
 }
