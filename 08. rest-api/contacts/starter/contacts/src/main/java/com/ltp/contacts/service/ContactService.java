@@ -6,4 +6,6 @@ public interface ContactService {
     Contact geContactById(String id);
 
     void saveContact(Contact contact);
+
+    void updateContact(String id, Contact contact);
 }
