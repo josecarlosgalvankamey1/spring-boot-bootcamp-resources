@@ -27,9 +27,6 @@ public class ContactController {
     @PostMapping("/contact")
     public ResponseEntity<HttpStatus> createContact(@RequestBody Contact contact) {
         contactService.saveContact(contact);
-        System.out.println(contact.getId());
-        System.out.println(contact.getName());
-        System.out.println(contact.getPhoneNumber());
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
