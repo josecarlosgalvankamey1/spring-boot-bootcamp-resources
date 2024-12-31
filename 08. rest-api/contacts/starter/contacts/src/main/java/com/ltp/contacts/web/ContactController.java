@@ -3,6 +3,7 @@ package com.ltp.contacts.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ public class ContactController {
     @GetMapping("/contact/{id}")
     public ResponseEntity<Contact> getContact(@PathVariable String id) {
         Contact contact = contactService.geContactById(id);
+        System.out.println(contact.getId());
         return new ResponseEntity<Contact>(contact, HttpStatus.OK);
     }
 
@@ -37,5 +39,11 @@ public class ContactController {
         contactService.updateContact(id, contact);
         Contact newContact = contactService.geContactById(id);
         return new ResponseEntity<Contact>(newContact, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/contact/{id}")
+    public ResponseEntity<HttpStatus> deleteContact(@PathVariable String id) {
+        contactService.deleteContact(id);
+        return new ResponseEntity<HttpStatus>(HttpStatus.NO_CONTENT);
     }
 }
