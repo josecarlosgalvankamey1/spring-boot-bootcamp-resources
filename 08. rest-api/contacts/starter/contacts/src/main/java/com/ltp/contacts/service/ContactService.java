@@ -1,5 +1,7 @@
 package com.ltp.contacts.service;
 
+import java.util.List;
+
 import com.ltp.contacts.pojo.Contact;
 
 public interface ContactService {
@@ -10,4 +12,6 @@ public interface ContactService {
     void updateContact(String id, Contact contact);
 
     public void deleteContact(String id);
+
+    public List<Contact> getContacts();
 }
