@@ -18,7 +18,7 @@ import com.ltp.contacts.service.ContactService;
 
 @RestController
 public class ContactController {
-    
+
     @Autowired
     private ContactService contactService;
 
@@ -30,10 +30,14 @@ public class ContactController {
 
     @GetMapping("/contact/{id}")
     public ResponseEntity<Contact> getContact(@PathVariable String id) {
-        Contact contact = contactService.getContactById(id);
-        return new ResponseEntity<>(contact, HttpStatus.OK);
+        try {
+            Contact contact = contactService.getContactById(id);
+            return new ResponseEntity<>(contact, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
-    
+
     @PostMapping("/contact")
     public ResponseEntity<HttpStatus> createContact(@RequestBody Contact contact) {
         contactService.saveContact(contact);
@@ -42,15 +46,22 @@ public class ContactController {
 
     @PutMapping("/contact/{id}")
     public ResponseEntity<Contact> updateContact(@PathVariable String id, @RequestBody Contact contact) {
-        contactService.updateContact(id, contact);   
-        return new ResponseEntity<Contact>(contactService.getContactById(id), HttpStatus.OK);
+        try {
+            contactService.updateContact(id, contact);
+            return new ResponseEntity<Contact>(contactService.getContactById(id), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping("/contact/{id}")
     public ResponseEntity<HttpStatus> deleteContact(@PathVariable String id) {
-        contactService.deleteContact(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        try {
+            contactService.deleteContact(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
-
 
 }
